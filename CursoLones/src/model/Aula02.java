@@ -18,6 +18,7 @@ public class Aula02 {
 		System.out.println("Digite 1 para somar; 2 para subtrair");
 		int op = read.nextInt();
 		
+		//adicionado comentario
 		switch (op) {
 		case 1:
 			int total = num1 + num2;
