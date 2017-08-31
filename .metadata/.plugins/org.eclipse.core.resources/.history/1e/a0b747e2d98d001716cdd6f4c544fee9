@@ -1,0 +1,16 @@
+package model;
+
+import java.util.Scanner;
+
+public class Aula10 {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("Digite o nome :");
+		String nome = scan.next();
+		System.out.println(nome);
+
+	}
+
+}
