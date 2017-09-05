@@ -21,29 +21,33 @@ public class AulaVetor {
 		
 		do {
 				
-			System.out.println("Digite data: ");
-			data = scan.nextLine();
-			
-			for(i=0; i < dataVetor.length; i++) {
-				if(data != dataVetor[i]) { 
-					liberar = true;
-				} else {
-					System.out.println("Data ja informada");
-				}
-			}
+				liberar = true;
+				System.out.println("Digite data: ");
+				data = scan.nextLine();
 				
-			if(liberar == true) {
-				j++;
-				dataVetor[j] = data;
-				System.out.println("Digite a temperatura: ");
-				tempVetor[j] = Float.parseFloat(scan.nextLine()); 
-			}
-			
-			
-			System.out.println("Deseja continuar (s/n): ");
-			condicao = scan.nextLine();
-			
-		} while (condicao == "s");
+				for(i=0; i < dataVetor.length; i++) {
+					boolean ehIgual = data.equals(dataVetor[i]);
+					if(ehIgual) { 
+						System.out.println("Data ja informada");
+						liberar = false;
+						break;
+					} 
+					
+				}
+					
+				if(liberar == true) {
+					j++;
+					dataVetor[j] = data;
+					System.out.println("Digite a temperatura: ");
+					tempVetor[j] = Float.parseFloat(scan.nextLine()); 
+				}
+				
+				
+				System.out.println("Deseja continuar (s/n): ");
+				condicao = scan.nextLine();
+				
+				
+			} while (condicao.equals("s"));
 		
 		
 	}
