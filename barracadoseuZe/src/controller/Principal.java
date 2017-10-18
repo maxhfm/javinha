@@ -31,8 +31,8 @@ public class Principal {
 		// Entrando com o produto
 		*/
 		 
-		//while (true) {
-					
+		String resposta;
+		do {			
 			System.out.println("Digite o nome do produto");
 			produto.setNome(scan.nextLine());
 			produto.setListaProduto(produto.getNome());
@@ -40,16 +40,16 @@ public class Principal {
 			System.out.println("Digite o valor do produto: ");
 			produto.setValor(Float.parseFloat(scan.nextLine()));
 			System.out.println("Digite a quantidade: ");
-			quantidade = scan.nextInt();
-			
-			calculo.calculaVendaporProduto(produto.getValor(), quantidade);
+			quantidade = Integer.parseInt(scan.nextLine());
 						
-			// Condicao para sair do sistema
 			System.out.println("Fim da venda (s/n): ");
-			String retorno = scan.nextLine();
-			if(retorno.equals("s"))
-			//	break;		
-		//}
+			retorno = scan.nextLine();
+			calculo.calculaVendaporProduto(produto.getValor(), quantidade);
+			
+			resposta = "";
+			
+			
+		}while(resposta.equals("s"));
 				
 		System.out.println("----CUPOM FISCAL----");
 		System.out.println("Lista de todos os produtos: ");
