@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import barracadoseuZe.model.Cliente;
+import barracadoseuZe.model.LimpaTela;
 import barracadoseuZe.model.Produto;
 import barracadoseuZe.model.Vendedor;
 
@@ -16,11 +17,12 @@ public class Principal {
 		int quantidade = 0;
 		CalculoProduto calculo = new CalculoProduto();
 		DecimalFormat df = new DecimalFormat("0.00");
+		LimpaTela limpaTela = new LimpaTela();
 		
 		//qual é a diferenca de instanciar produto e criar atributo produto
 		Produto produto = new Produto();
 		
-		/*		
+				
 		// Inicializacao do Sistema
 		
 		System.out.println("Digite o cliente: ");
@@ -29,10 +31,12 @@ public class Principal {
 		cliente.setCpf(scan.nextLine());
 				
 		// Entrando com o produto
-		*/
+		
 		 
 		String resposta;
-		do {			
+		do {
+			limpaTela.limpatela();
+			System.out.println("Hora das compras");
 			System.out.println("Digite o nome do produto");
 			produto.setNome(scan.nextLine());
 			produto.setListaProduto(produto.getNome());
@@ -41,17 +45,19 @@ public class Principal {
 			produto.setValor(Float.parseFloat(scan.nextLine()));
 			System.out.println("Digite a quantidade: ");
 			quantidade = Integer.parseInt(scan.nextLine());
-						
-			System.out.println("Fim da venda (s/n): ");
-			retorno = scan.nextLine();
 			calculo.calculaVendaporProduto(produto.getValor(), quantidade);
 			
-			resposta = "";
+			System.out.println("Fim da venda (s/n): ");
+			resposta = scan.nextLine();
 			
-			
-		}while(resposta.equals("s"));
-				
-		System.out.println("----CUPOM FISCAL----");
+						
+		}while(resposta.equals("n"));
+		
+		System.out.println("-------------------------------------");
+		System.out.println("Cliente: " + cliente.getNome());
+		System.out.println("CPF do Cliente: " + cliente.getCpf());
+		System.out.println(" ");
+		System.out.println("----------CUPOM FISCAL---------------");
 		System.out.println("Lista de todos os produtos: ");
 		for (String listaProdutos : produto.getListaProduto()) {
 			System.out.println(listaProdutos);
@@ -60,6 +66,7 @@ public class Principal {
 		System.out.println("Valor total da Venda: " + df.format(calculo.totalGeralVenda()));
 		System.out.println("Valor total impostos: " + df.format(calculo.totalImpostos()));
 		System.out.println("Valor total comissao: " + df.format(calculo.totalComissaoVendedor()));
+		System.out.println("-------------------------------------");
 		
 
 	}

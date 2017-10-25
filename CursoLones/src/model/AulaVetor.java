@@ -18,9 +18,14 @@ public class AulaVetor {
 		String data = new String();
 		int i = -1;
 		int j = -1;
+		float mediaTemperatura = 0;
+		float somaTemperatura = 0;
+		float menorTemperatura = 100;
+		float maiorTemperatura = -50;
+		int indiceTemperaturaDataMenor = -1;
+		int indiceTemperaturaDataMaior = -1;
 		
-		do {
-				
+		do {				
 				liberar = true;
 				System.out.println("Digite data: ");
 				data = scan.nextLine();
@@ -32,7 +37,6 @@ public class AulaVetor {
 						liberar = false;
 						break;
 					} 
-					
 				}
 					
 				if(liberar == true) {
@@ -42,13 +46,38 @@ public class AulaVetor {
 					tempVetor[j] = Float.parseFloat(scan.nextLine()); 
 				}
 				
-				
+	
 				System.out.println("Deseja continuar (s/n): ");
 				condicao = scan.nextLine();
 				
 				
 			} while (condicao.equals("s"));
 		
+		for (i = 0; i < tempVetor.length; i++)
+			somaTemperatura = somaTemperatura + tempVetor[i];
+		
+		for (i = 0; i < tempVetor.length; i++) {
+			if (tempVetor[i] < menorTemperatura) {
+				menorTemperatura = tempVetor[i];
+				indiceTemperaturaDataMenor = i;
+			}
+		}
+		
+		for (i = 0; i < tempVetor.length; i++) {
+			if (tempVetor[i] > maiorTemperatura) {
+				maiorTemperatura = tempVetor[i];
+				indiceTemperaturaDataMaior = i;
+			}
+		}
+		
+		mediaTemperatura = somaTemperatura / tempVetor.length;
+		
+		
+		
+		System.out.println("Exibindo resultado: ");
+		System.out.println("Media Temperatura: " + mediaTemperatura);
+		System.out.println("Menor temperatura registrada foi de " + menorTemperatura + " no dia " + dataVetor[indiceTemperaturaDataMenor]);
+		System.out.println("Maior temperatura registrada foi de " + maiorTemperatura + " no dia " + dataVetor[indiceTemperaturaDataMaior]);
 		
 	}
 
