@@ -1,0 +1,33 @@
+<html>
+<head>
+  <title>Livraria</title>
+  <meta charset="utf-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<h1>Sistema Biblioteca do seu Ze</h1>  
+    <h3>Adicionar Livro</h3>
+    <form th:action="@{/livro/adicionar}" th:object="${livro}" metthod="post">
+		<div class="row">
+			<div class="form-group col-sm-3">
+				<label class="control-label" for="nome">Nome</label> 
+				<input class="form-control" type="text" name="nome" id="nome" th:field="*{nome}" />
+			</div>
+			<div class="form-group col-sm-3">
+				<label class="control-label" for="descricao">Descricao</label>
+				<textarea class="form-control" name="descricao" id="descricao" th:field="*{descricao}"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-3 col-sm-offset-6 text-right">
+				<button class="btn btn-success" type="submit">
+					<span class="glyphicon glyphicon-ok"></span> Salvar
+				</button>
+			</div>
+		</div>
+	</form>
+  </body>
+</html>
